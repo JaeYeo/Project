@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<util:properties id="kakologinAPI" location="classpath:config/kakologinAPI.properties"></util:properties>
+	
+		<!-- 1.jdbc.properties -->
+	<context:property-placeholder location="classpath:config/jdbc.properties"/><!-- 4가지정보 읽기 -->
+	<!-- 2.DBCP2 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"><!-- dataSource생성 -->
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${userid}"></property>
+		<property name="password" value="${passwd}"></property>
+	</bean>
+	
+	
+	
+	<!-- transaction -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+	<!--3.SqlSessionFactoryBean  -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:config/ReservationMapper.xml</value><!-- mapper 등록 -->
+				<value>classpath:config/SearchMapper.xml</value>
+			</list>		
+		</property>
+		<property name="typeAliases"><!-- dto등록 -->
+			<list>
+				<!-- alias 주소는 각 클래스에서 alias 어노테이션으로 설정  -->
+				<value>com.dto.AirportDTO</value>
+				<value>com.dto.AirlineDTO</value>
+				<value>com.dto.LoginDTO</value>
+				<value>com.dto.PassportInfoDTO</value>
+				<value>com.dto.ReservationDTO</value>				
+				<value>com.dto.ScheduleSearchDTO</value>				
+				<value>com.dto.SearchBtnDTO</value>				
+				<value>com.dto.SearchDTO</value>	
+				<value>com.dto.SelectBtnDTO</value>	
+			</list>		
+		</property>
+	</bean>	
+	<!-- 4. SqlSessionTemplate : SqlSession기능 실제 db연동에 사용함-->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sessionFactory"></constructor-arg>
+	</bean>
+	<!-- 종료 -->
+</beans>

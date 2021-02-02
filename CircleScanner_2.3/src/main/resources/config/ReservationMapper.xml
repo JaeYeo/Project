@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReservationMapper">
+	<!-- by jungwoo 20201201 -->
+	<!-- to_date('2020-11-26 00:05:00', 'yyyy-mm-dd hh24:mi:ss') -->
+	<insert id="insertReservation_Id" parameterType="string">
+		insert into RESERVATION(RESERVATION_ID, RESERVATION_DATE) values(SYS_GUID(), to_date(#{RESERVATION_DATE}, 'yyyy/mm/dd hh24:mi:ss'))
+	</insert>
+	
+	<select id="selectRESERVATION_ID" parameterType="string" resultType="string">
+		select RESERVATION_ID from RESERVATION
+		where RESERVATION_DATE = to_date(#{reservation_Date}, 'yyyy/mm/dd hh24:mi:ss')
+	</select>
+	
+	<update id="updateReservation" parameterType="ReservationDTO">
+		update RESERVATION
+		set
+		RESERVATION_NAME = #{reservation_Name},
+		reservation_Email = #{reservation_Email},
+		RESERVATION_PHONE = #{reservation_phone},
+		TOTALPRICEINT = #{totalPriceInt},
+		PAYSTATE = #{payState}
+		where RESERVATION_ID = #{reservation_ID} 
+		and RESERVATION_DATE = to_date(#{reservation_Date}, 'yyyy/mm/dd hh24:mi:ss')
+	</update>
+</mapper>

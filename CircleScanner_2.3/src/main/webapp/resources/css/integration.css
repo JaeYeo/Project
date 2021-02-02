@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+.integration {
+	background-color: #f8f8f8;
+}
+.integration .wrap {
+	padding: 28px 0;
+}
+.processInfo {
+	width: 70%;
+	background-color: #fff;
+	float: left;
+	padding: 10px 40px 40px;
+}
+.process_box {
+	width: 70%;
+	margin: 20px 0 40px;
+	display: flex;
+	justify-content: center;
+}
+.process .process_info {
+	display: inline-block;
+	padding: 20px;
+	background-color: #999;
+	text-align: center;
+	border-radius: 25px;
+	color: #fff;
+	font-size: 24px;
+}
+/*  */
+.process .process_info_select {
+	background-color: var(--main-color);
+}
+.process span:hover {
+	background-color: #0562c9;
+}
+.input_box label, .input_box input, .input_box select{
+	padding: 10px 4px;
+	vertical-align: top;
+	margin-bottom: 5px;
+}
+.input_box label {
+	display: inline-block;
+	width: 120px;
+}
+.input_box input {
+	width: 240px;
+	border: 1px solid #999;
+}
+.input_box select {
+	width: 120px;
+	border: 1px solid #999;
+	color: #999;
+}
+
+.input_box .extra {
+	display: inline-block;
+	line-height: 25px;
+}
+.input_box .passwd {
+	width: 80px;
+}
+.input_box input.cardNum {
+	width: 80px;
+}
+.next_btn {
+	border: 1px solid var(--main-color);
+	background: transparent;
+	padding: 12px;
+	color: var(--main-color);
+	font-size: 18px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+.next_btn:hover {
+	background-color: var(--main-color);
+	color: #fff;
+}
+.kakaopay_btn {
+	background-color: #ffeb00;
+	color: #000;
+	margin-right: 5px;
+	border: none;
+}
+.passengerInfo_box {
+	margin-top: 24px;
+}
+.passengerInfo_box h3 {
+	margin-bottom: 10px;
+}
+.basic_view_integration {
+	width: 30%;
+	float: right;
+	padding: 20px;
+}
+.price_info {
+	padding: 10px;
+	border-top: 1px solid #e9ecef;
+}
+.person_title {
+	padding: 10px;
+	border-top: 1px solid #e9ecef;
+	border-bottom: 1px solid #e9ecef;
+}
+.person_title h3 {
+	font-size: 16px;
+}
+.person_title h3 strong {
+	color: var(--main-color);
+	margin-left: 5px;
+}
+.circle_basic_view {border-top:1px solid #e9ecef;}
+.circle_basic_view table {width:100%;table-layout:fixed;}
+.circle_basic_view table tbody {border-bottom:1px solid #e9ecef;}
+.circle_basic_view table tbody tr td {padding:4px 8px;font-size:14px;font-weight:500;}
+.circle_basic_view table tbody tr td.td_r,
+.circle_basic_view table tfoot tr td.td_r {text-align: right;}
+.circle_basic_view table tbody tr:first-child td {padding-top:16px;}
+.circle_basic_view table tbody tr:last-child td {padding-bottom:16px;}
+.circle_basic_view table tfoot tr td {padding:6px 8px;font-weight:bold;}

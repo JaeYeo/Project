@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+.user-profile__container {
+    width: 30%;
+    float: left;
+}
+.user-profile-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-color);
+}
+.user-img__container {
+    width: 80px;
+    margin-bottom: 15px;
+    border: 1px solid var(--gray-color);
+    border-radius: 50%;
+}
+.user-img {
+    width: 100%;
+}
+.user-info li {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    border-bottom: 1px solid var(--gray-color);
+}
+.user-info li a.current {
+    background-color: var(--white-color);
+}
+.user-info li:hover {
+    background-color: var(--white-color);
+}
+.user-info li .user-info-left {
+    display: flex;
+    align-items: center;
+}
+.user-info li svg {
+    fill: #94b9b8;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.user-info li a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.user-info li a span {
+    margin-left: 10px;
+}
+.extra {
+    display: block;
+    font-size: .8rem;
+    color: #999;
+    margin-top: 5px;
+    font-style: normal;
+}
+.right-arrow {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+.logout__container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+.logout-btn {
+    width: 50%;
+}
+.logout-btn:hover {
+    background-color: var(--sub-color);
+    color: var(--white-color);
+    border: none;
+}
+.user-contents {
+    display: none;
+    width: calc(70% - 50px);
+    float: right;
+    margin: 30px 0 0 50px;
+}
+.user-contents.current {
+    display: block;
+}
+.user-contents__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user-profileInfo {
+    width: 100%;
+}
+.user-profileInfo h2 {
+    margin-bottom: 20px;
+}
+.user-profileInfo__container li{
+    margin-bottom: 20px;
+}
+.input__container {
+    display: block;
+    width: 100%;
+    height: 46px;
+    border: 1px solid var(--gray-color);
+    border-radius: 5px;
+}
+.userInfo-title {
+    display: block;
+    margin-bottom: 5px;
+}
+.userInfo-title em {
+    color: rgb(240, 0, 0);
+}
+.input__container input,
+.input__container select {
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+    outline: none;
+}
+.user-contents__container [type="submit"] {
+    width: 50%;
+    text-align: center;
+    margin: 20px 0;
+}
+.user-account__container {
+    
+}
+.user-account__container dt {
+    background-color: var(--gray-color);
+    height: 46px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.user-account__container dd {
+    padding: 20px 10px;
+    font-weight: normal;
+    line-height: 20px;
+}
+.user-account__container dd span {
+	display: block;
+}
+.user_email-big {
+	font-size: 1.4rem;
+}

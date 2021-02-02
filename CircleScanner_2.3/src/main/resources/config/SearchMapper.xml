@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SearchMapper">
+
+	<!-- by jungwoo & 호빈 202010 -->
+	<!-- 공항 IATACODE 가져오기 -->
+	<!-- 초기 개발시점에서 찾으려고하는 값들은 국제선을 검색하기 때문에 첫번째 조건 international + 검색 키워드  -->
+	<select id="selectIATA" parameterType="string"
+		resultType="string">
+		SELECT iata_a FROM IATA_CODE_AIRPORT WHERE ANAME_E LIKE
+		'%'||'International'||'%' and acity_k like '%'||#{acountry_k}||'%'
+	</select>
+	
+	<!-- by jungwoo & 호빈 202010 -->
+	<!-- 공항권 검색 버튼을 눌렀을 때 발생되는 이벤트  -->
+	<!-- 왕복을 기준으로 설계를 시작, 쿼리가 무조건 두번 날아감 그중 첫번째 출발지를 기준으로함 -->
+	<select id="selectScheduleSearch_D" parameterType="ScheduleSearchDTO" resultType="ScheduleSearchDTO">
+		select SCHEDULE_ID ,
+		DEPARTURE_ACODE ,
+		DESTINATION_ACODE ,
+		DEPART_DATE ,
+		ARRIVE_DATE ,
+		AIRLINE_NAME ,
+		AIRCRAFT_NAME ,
+		PRICE,
+		to_char(ROUND((arrive_date-depart_date)*24*60)) DURATION_OF_TIME
+		from schedule 
+		where 
+		departure_acode = '${DEPARTURE_ACODE}' and
+		destination_acode = '${DESTINATION_ACODE}' and
+		depart_date between
+		to_date('${DEPART_DATE} 00:00:00', 'yyyy/mm/dd hh24:mi:ss') and
+		to_date('${DEPART_DATE} 23:59:59', 'yyyy/mm/dd hh24:mi:ss')
+	</select>
+	
+	<!-- by jungwoo & 호빈 202010 -->
+	<!-- 공항권 검색 버튼을 눌렀을 때 발생되는 이벤트 -->
+	<!-- 왕복이기 때문에 오는 항공편은 출발공항과 도착공항이 바뀜 -->
+	<select id="selectScheduleSearch_A" parameterType="ScheduleSearchDTO" resultType="ScheduleSearchDTO">
+		select SCHEDULE_ID ,
+		DEPARTURE_ACODE ,
+		DESTINATION_ACODE ,
+		DEPART_DATE ,
+		ARRIVE_DATE ,
+		AIRLINE_NAME ,
+		AIRCRAFT_NAME ,
+		PRICE,
+		to_char(ROUND((arrive_date-depart_date)*24*60)) DURATION_OF_TIME
+		from schedule 
+		where 
+		departure_acode = '${DESTINATION_ACODE}' and
+		destination_acode = '${DEPARTURE_ACODE}' and
+		depart_date between
+		to_date('${ARRIVE_DATE} 00:00:00', 'yyyy/mm/dd hh24:mi:ss') and
+		to_date('${ARRIVE_DATE} 23:59:59', 'yyyy/mm/dd hh24:mi:ss')
+	</select>
+	
+	<!-- by jungwoo & 호빈 202010 -->
+	<!-- 공항권 검색 버튼을 눌렀을 때 발생되는 이벤트 -->
+	<!-- Search page에서 출력할 항공사 한국 이름을 가져온다 -->
+	<select id="selectAirlineNameKorean" parameterType="string" resultType="string">
+		select ANAME_K
+		from ANAME_KR
+		where 
+		IATA_A = #{aCode}
+	</select>
+	
+	<!-- by jungwoo 20201221 -->
+	<!-- 공항권 검색 버튼을 눌렀을 때 발생되는 이벤트 -->
+	<!-- Search page에서 출력할 항공사의 모든정보룰 가져온다 -->
+	<select id="selectAirline" parameterType="string" resultType="AirlineDTO">
+		select *
+		from ANAME_KR
+		where 
+		IATA_A = #{aCode}
+	</select>
+	
+	
+	<!-- by jungwoo & 호빈 202010  2차수정 20201126 -->
+	<!-- 1차 IATA코드로 한글 공항명 전달받기 resultType string -->
+	<!-- 2차 IATA코드로 공항관련된 이름 가져오기 한글 공항명뿐만아니라 pdf에서 출력할 공항이름들을 담아옴 -->
+	<!-- 추후 개발가능성은 낮으나 확정성을 고려하여 모든 데이터를 받아 dto에 담음  -->
+	<select id="selectAirportNames" parameterType="string" resultType="AirportDTO">
+		select *
+		from iata_code_airport
+		where iata_a = #{IATA_A}
+	</select>
+</mapper>

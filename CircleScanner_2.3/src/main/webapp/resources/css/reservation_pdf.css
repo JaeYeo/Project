@@ -1,0 +1,149 @@
+hr{
+    color: gray;
+    border: solid 0.1px;
+    margin: 0;
+}
+.hr_dotted{
+    border: dashed 0.01mm floralwhite;
+    
+}
+.form{
+    width: 200mm;
+    height: 247mm;
+    border-style: solid;
+    border-width: 0.1px;
+}
+.back_img{
+    background-color: rgb(220, 235, 245);
+}
+.sec1{
+    border: 0;
+    background-color: cornsilk;
+    width: 200mm;
+    height: 40mm;
+}
+.sec1_left{
+    width: 90mm;
+    float: left;
+}
+.sec1_left_top{
+    font-size: 6.5mm;
+    color: mediumslateblue;
+}
+.sec1_right{
+    display: inline-block;
+}
+.sec1_right_top{
+    font-size: 6.5mm;
+}
+/* /////////////////// */
+.sec2{
+    width: 200mm;
+    height: 36mm;
+}
+.sec2_left{
+    display: inline-block;
+    width: 100mm;
+    height: 30mm; 
+    margin-top: 8mm;
+}
+.sec2_left div{
+    float: left;
+}
+.sec2_left_1st{
+    width: 25mm;  
+    margin: 0 0 0 2mm;
+}
+.sec2_left_2nd{
+    width: 40mm;
+}
+.sec2_right{
+    margin: 5mm 8mm 0 0;
+    height: 25mm;
+    width: 80mm;
+    border: solid 1px;
+    float: right;
+    
+}
+/* ////////////// */
+.sec3{
+    width: 200mm;
+    height: 10mm;
+    margin: 2mm 0 0 5mm;
+    font-size: 5mm;
+    
+}
+/* ////////////// */
+.sec4{
+    width: 200mm;
+    
+}
+.sec4_top{
+    width: 200mm;
+    height: 15mm;
+    margin-left: 2mm;
+}
+.sec4_top >div,
+.sec4_middle_departure div,
+.sec4_middle_arrival div{
+    float: left;
+}
+.sec4_top_1st{
+    height: 12mm;
+    width: 30mm;
+    margin-top: 3mm;
+}
+.sec4_top_2nd{
+    height: 15mm;
+    width: 110mm;
+}
+.sec4_top_3rd{
+    height: 12mm;
+    margin-top: 3mm;
+}
+
+.sec4_middle{
+    display: inline-block;
+    margin: 3mm 0 3mm 2mm;      
+}
+.sec4_middle_departure{
+    height: 7mm;
+}
+.sec4_middle_departure_1st{
+    width: 35mm;
+}
+.sec4_middle_departure_2nd{
+    width: 55mm;
+    margin-right: auto;
+}
+.sec4_middle_departure_3rd{
+    width: 60mm;
+    margin-right: auto;
+}
+.sec4_bottom{
+    display: inline-block;
+    margin-left: 2mm;
+}
+.sec4_bottom div{
+    float: left;
+}
+.sec4_bottom_1st{
+    width: 45mm;
+    margin-right: auto;
+}
+.sec4_bottom_2nd{
+    width: 45mm;
+    margin-right: auto;
+}
+.sec4_bottom_3rd{
+    width: 45mm;
+    margin-right: auto;
+}
+.sec4_bottom_4th{
+    width: 78mm;
+    margin-right: auto;
+}
+.sec4_bottom_5th{
+    width: 38mm;
+    margin-right: auto;
+}
